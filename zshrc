@@ -5,8 +5,17 @@ git_prompt_info() {
     echo "[%{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%}]"
   fi
 }
+function current_branch() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
+    ref=$(git rev-parse --short HEAD 2> /dev/null) || return
+  echo ${ref#refs/heads/}
+}
+function database_from_current_branch() {
+  echo $(current_branch) | sed -r 's#\/#_#g'
+}
+
 setopt promptsubst
-export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%~%{$reset_color%}] '
+export PS1=$'$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%~%{$reset_color%}]\n$ '
 
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
