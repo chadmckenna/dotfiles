@@ -25,8 +25,7 @@ Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/tComment'
 
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'stephenmckinney/vim-solarized-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'christoomey/vim-tmux-navigator'
 
 " tpope yay!:
