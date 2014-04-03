@@ -26,6 +26,7 @@ Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/tComment'
 
 Bundle 'bling/vim-airline'
+Bundle 'edkolev/tmuxline.vim'
 Bundle 'christoomey/vim-tmux-navigator'
 
 " tpope yay!:
