@@ -1,9 +1,31 @@
 [[ -f /etc/profile ]] && source /etc/profile
+
+last_exit_code="$?"
+esc=$'\e[' end_esc=m
+noprint='%{' end_noprint='%}'
+wrap="$noprint$esc" end_wrap="$end_esc$end_noprint"
+space=" "
+sep=""
+rsep=""
+alt_sep=""
+alt_rsep=""
+reset="${wrap}0${end_wrap}"
+reset_bg="${wrap}49${end_wrap}"
+a_fg="${wrap}38;5;17${end_wrap}"
+a_bg="${wrap}48;5;190${end_wrap}"
+a_sep_fg="${wrap}38;5;190${end_wrap}"
+b_fg="${wrap}38;5;255${end_wrap}"
+b_bg="${wrap}48;5;238${end_wrap}"
+b_sep_fg="${wrap}38;5;238${end_wrap}"
+c_fg="${wrap}38;5;85${end_wrap}"
+c_bg="${wrap}48;5;234${end_wrap}"
+c_sep_fg="${wrap}38;5;234${end_wrap}"
+
 # modify the prompt to contain git branch name if applicable
 git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null)
   if [[ -n $ref ]]; then
-    echo "[%{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%}]"
+    echo "${a_bg}${space}${a_fg}${ref#refs/heads/}${space}${reset}${a_sep_fg}${b_bg}${sep}"
   fi
 }
 function current_branch() {
@@ -16,7 +38,7 @@ function database_from_current_branch() {
 }
 
 setopt promptsubst
-export PS1=$'$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%~%{$reset_color%}]\n$ '
+export PS1=$'$(git_prompt_info)${b_bg}${space}${b_fg}${SSH_CONNECTION+"%n$space$alt_sep$space%m"}${space}${reset}${b_sep_fg}${c_bg}${sep}${space}${c_fg}%~${space}${reset}${c_sep_fg}${sep}${reset}${space}'
 
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
