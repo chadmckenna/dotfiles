@@ -33,7 +33,6 @@ Bundle 'christoomey/vim-tmux-navigator'
 " tpope yay!:
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-haml'

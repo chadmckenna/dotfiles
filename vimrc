@@ -17,6 +17,7 @@ set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set viminfo+=%    " Save buffers on close
+set cc=80         " Sets a line length of 80
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -51,12 +52,16 @@ augroup vimrcEx
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile *.json.jbuilder set filetype=ruby
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
 
   " Automatically wrap at 80 characters for Markdown
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+
+  " Automatically trip whitespace on write
+  autocmd BufWritePre * :%s/\s\+$//e
 augroup END
 
 " Softtabs, 2 spaces
