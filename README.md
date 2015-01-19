@@ -1,5 +1,7 @@
-thoughtbot dotfiles
+chad's/thoughtbot dotfiles
 ===================
+
+![drawing](https://docs.google.com/drawings/d/1unwAYO6ad7yGXQPLoA1ISF2IUqbt1sBcAGZTtHZoHVw/pub?w=960&h=720)
 
 Requirements
 ------------
