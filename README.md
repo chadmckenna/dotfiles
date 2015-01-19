@@ -1,6 +1,9 @@
 chad's/thoughtbot dotfiles
 ===================
 
+[drawing](https://docs.google.com/a/24tru.com/drawings/d/1oD6UYuD92y8ff-CWbjY_hodS2bsHp5bd2m3up07mE3Q/pub?w=960&h=720)
+<img src="https://docs.google.com/a/24tru.com/drawings/d/1oD6UYuD92y8ff-CWbjY_hodS2bsHp5bd2m3up07mE3Q/pub?w=960&amp;h=720">
+
 Requirements
 ------------
 
