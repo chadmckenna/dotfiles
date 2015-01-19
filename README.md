@@ -1,4 +1,4 @@
-thoughtbot dotfiles
+chad's/thoughtbot dotfiles
 ===================
 
 Requirements
