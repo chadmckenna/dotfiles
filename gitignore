@@ -1,10 +1,11 @@
-*.DS_Store
+.DS_Store
 *.sw[nop]
 .bundle
+.byebug_history
 .env
 db/*.sqlite3
 log/*.log
 rerun.txt
 tmp/**/*
 !tmp/cache/.keep
-zeus.json
+*.pyc
