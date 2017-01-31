@@ -28,3 +28,5 @@
 [user]
 	name = Chad McKenna
 	email = chad.mckenna@welltok.com
+[credential]
+	helper = osxkeychain

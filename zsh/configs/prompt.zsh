@@ -21,7 +21,7 @@ ruby_version() {
 rb_prompt() {
   if ! [[ -z "$(ruby_version)" ]]
   then
-    echo "%{$fg_bold[yellow]%}$(ruby_version)%{$reset_color%} "
+    echo "%{$fg_bold[magenta]%}($(ruby_version))%{$reset_color%} "
   else
     echo ""
   fi
@@ -41,9 +41,9 @@ git_dirty() {
   else
     if [[ $($git status --porcelain) == "" ]]
     then
-      echo " %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
+      echo " %{$fg_bold[green]%}●%{$reset_color%} $(git_prompt_info)"
     else
-      echo " %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
+      echo " %{$fg_bold[red]%}◦%{$reset_color%} %{$fg[red]%}$(git_prompt_info)%{$reset_color%}"
     fi
   fi
 }
@@ -53,7 +53,7 @@ ssh_connection() {
 }
 
 directory_name() {
-  echo "%{$fg_bold[cyan]%}%c/%{$reset_color%}"
+  echo "%{$fg_bold[cyan]%}%2d%{$reset_color%}"
 }
 setopt promptsubst
 PS1='$(ssh_connection)$(rb_prompt)$(directory_name)$(git_dirty) › '
