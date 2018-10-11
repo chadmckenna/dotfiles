@@ -39,7 +39,7 @@ alias show='git show'
 alias log='git log'
 alias gsa='git stash apply'
 alias gd='git diff'
-alias gs='git status'
+alias gss='git status'
 alias gpull='git pull'
 alias gb='git branch'
 alias graph="git log $1 --graph --pretty=oneline --abbrev-commit"

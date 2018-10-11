@@ -5,3 +5,6 @@ local_hook="$HOME"/.git_template.local/hooks/pre-commit
 if [ -f "$local_hook" ]; then
   . "$local_hook"
 fi
+
+echo 'flake8 .'
+flake8 .
