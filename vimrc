@@ -169,6 +169,9 @@ let g:airline#extensions#tabline#enabled = 1
 " configure ctrlp to index all files
 let g:ctrlp_max_files=0
 
+" set colorscheme to nord
+colorscheme palenight
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
