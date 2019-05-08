@@ -87,6 +87,10 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
+
 " Color scheme
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
@@ -135,6 +139,9 @@ nnoremap <Leader>r :RunInInteractiveShell<space>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
+
+" NERDTree Shortcut
+map <C-n> :NERDTreeToggle<CR>
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
