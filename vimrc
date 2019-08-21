@@ -15,6 +15,9 @@ set encoding=utf-8 " Necessary to show Unicode glyphs
 set viminfo+=%    " Save buffers on close
 set cc=80         " Sets a line length of 80
 
+" Set relativenumber as default
+set relativenumber
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
