@@ -58,6 +58,7 @@ Plug 'mxw/vim-jsx'
 Plug 'scrooloose/nerdtree'
 Plug 'yssl/QFEnter'
 Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
