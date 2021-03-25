@@ -13,7 +13,7 @@ set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set viminfo+=%    " Save buffers on close
-set cc=80         " Sets a line length of 80
+set cc=100         " Sets a line length of 80
 
 " Set relativenumber as default
 set relativenumber
