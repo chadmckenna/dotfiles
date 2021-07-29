@@ -204,6 +204,14 @@ Shell aliases and scripts:
 * `tat` to attach to tmux session named the same as the current directory.
 * `v` for `$VISUAL`.
 
+FZF
+
+```
+brew install fzf
+```
+
+For mor info on FZF: https://github.com/junegunn/fzf
+
 Thanks
 ------
 
