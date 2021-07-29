@@ -99,7 +99,7 @@ highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
 " Make it obvious where 80 characters is
-set textwidth=80
+set textwidth=100
 set colorcolumn=+1
 
 " Numbers
@@ -181,6 +181,12 @@ let g:airline#extensions#tabline#enabled = 1
 
 " configure ctrlp to index all files
 let g:ctrlp_max_files=0
+
+" configure qfenter
+let g:qfenter_keymap = {}
+let g:qfenter_keymap.vopen = ['<C-v>']
+let g:qfenter_keymap.hopen = ['<C-CR>', '<C-s>', '<C-x>']
+let g:qfenter_keymap.topen = ['<C-t>']
 
 " set colorscheme to nord
 " colorscheme palenight
