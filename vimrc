@@ -50,12 +50,13 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile *.json.jbuilder set filetype=ruby
+  autocmd BufRead,BufNewFile *.tsx,*.jsx set filetype=typescriptreact
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
 
-  " Automatically wrap at 80 characters for Markdown
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+  " Automatically wrap at 100 characters for Markdown
+  autocmd BufRead,BufNewFile *.md setlocal textwidth=100
 
   " Automatically trip whitespace on write
   autocmd BufWritePre * :%s/\s\+$//e

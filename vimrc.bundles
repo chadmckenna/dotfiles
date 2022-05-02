@@ -56,9 +56,9 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'scrooloose/nerdtree'
-Plug 'yssl/QFEnter'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'peitalin/vim-jsx-typescript'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'yssl/QFEnter'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
