@@ -26,6 +26,6 @@
   path = ~/.gitconfig.local
 [user]
 	name = Chad McKenna
-	email = chad.mckenna@cognizant.com
+	email = chad.mckenna@gmail.com
 [credential]
 	helper = osxkeychain
