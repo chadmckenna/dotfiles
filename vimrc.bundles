@@ -60,6 +60,7 @@ Plug 'scrooloose/nerdtree'
 " Plug 'peitalin/vim-jsx-typescript'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'yssl/QFEnter'
+Plug 'ap/vim-css-color'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
