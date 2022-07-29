@@ -13,7 +13,7 @@ set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set viminfo+=%    " Save buffers on close
-set cc=100         " Sets a line length of 80
+set cc=100         " Sets a line length of 100
 
 " Set relativenumber as default
 set relativenumber
@@ -41,10 +41,10 @@ augroup vimrcEx
   " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
   " inside an event handler (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+  " autocmd BufReadPost *
+  "   \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+  "   \   exe "normal g`\"" |
+  "   \ endif
 
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
@@ -56,7 +56,7 @@ augroup vimrcEx
   autocmd FileType markdown setlocal spell
 
   " Automatically wrap at 100 characters for Markdown
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=100
+  " autocmd BufRead,BufNewFile *.md setlocal textwidth=100
 
   " Automatically trip whitespace on write
   autocmd BufWritePre * :%s/\s\+$//e
@@ -147,6 +147,9 @@ let g:html_indent_tags = 'li\|p'
 " NERDTree Shortcut
 map <C-n> :NERDTreeToggle<CR>
 
+" Close all buffers but the current
+map <C-W> :%bd\|e#<CR>
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
@@ -158,7 +161,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap K :Ag '\b<C-R><C-W>\b'<CR>:cw<CR>
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
