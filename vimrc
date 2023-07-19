@@ -181,6 +181,7 @@ set diffopt+=vertical
 
 " configure airline
 let g:airline_powerline_fonts = 1
+let g:airline_theme = 'solarized'
 let g:airline#extensions#tabline#enabled = 1
 
 " configure ctrlp to index all files
@@ -193,13 +194,14 @@ let g:qfenter_keymap.hopen = ['<C-CR>', '<C-s>', '<C-x>']
 let g:qfenter_keymap.topen = ['<C-t>']
 
 " set colorscheme to nord
-" colorscheme palenight
+colorscheme palenight
+
 if (has("termguicolors"))
   set termguicolors
 endif
 
 syntax enable
-colorscheme night-owl
+" colorscheme night-owl
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")

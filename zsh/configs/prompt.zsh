@@ -18,10 +18,26 @@ ruby_version() {
   fi
 }
 
+node_version() {
+  if type nvm_version &> /dev/null
+  then
+    echo "$(nvm_version)"
+  fi
+}
+
 rb_prompt() {
   if ! [[ -z "$(ruby_version)" ]]
   then
     echo "%{$fg_bold[magenta]%}($(ruby_version))%{$reset_color%} "
+  else
+    echo ""
+  fi
+}
+
+js_prompt() {
+  if ! [[ -z "$(node_version)" ]]
+  then
+    echo "%{$fg_bold[white]%}($(node_version))%{$reset_color%} "
   else
     echo ""
   fi
@@ -56,4 +72,4 @@ directory_name() {
   echo "%{$fg_bold[cyan]%}%2d%{$reset_color%}"
 }
 setopt promptsubst
-PS1='$(ssh_connection)$(rb_prompt)$(directory_name)$(git_dirty) › '
+PS1='$(ssh_connection)$(js_prompt)$(rb_prompt)$(directory_name)$(git_dirty) › '
