@@ -203,6 +203,21 @@ endif
 syntax enable
 " colorscheme night-owl
 
+" C# Development Shortcuts
+autocmd FileType cs nmap <silent> gd :OmniSharpGotoDefinition<CR>
+autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementation<CR>
+autocmd FileType cs nnoremap <buffer> <Leader>fc :OmniSharpGetCodeActions<CR>
+let g:OmniSharp_selector_ui = 'fzf'
+let g:OmniSharp_selector_findusages = 'fzf'
+
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+
+let g:fzf_command_prefix = 'Fzf'
+nnoremap <silent> <C-F> :FzfFiles<CR>
+nnoremap <silent> <C-O> :FzfGFiles<CR>
+let g:fzf_layout = { 'down': '25%' }
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local

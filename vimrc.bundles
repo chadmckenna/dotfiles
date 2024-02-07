@@ -61,9 +61,17 @@ Plug 'scrooloose/nerdtree'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'yssl/QFEnter'
 Plug 'ap/vim-css-color'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " C# Plugin
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'dense-analysis/ale'
+
+" Prettier Plugin
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
