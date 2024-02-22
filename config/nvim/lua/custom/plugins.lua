@@ -47,19 +47,33 @@ local plugins = {
     end,
   },
 
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
+  {
+    "dustinblackman/oatmeal.nvim",
+    cmd = { "Oatmeal" },
+    keys = {
+        { "<leader>om", mode = "n", desc = "Start Oatmeal session" },
+    },
+    opts = {
+        backend = "ollama",
+        model = "gemma:7b",
+    },
+  },
 
-  -- All NvChad plugins are lazy-loaded by default
-  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-  -- {
-  --   "mg979/vim-visual-multi",
-  --   lazy = false,
-  -- }
+  { 
+    "David-Kunz/gen.nvim",
+    event = "VeryLazy",
+    opts = {
+      model = "mistral:latest",
+      display_mode = "split",
+      no_auto_close = true
+    },
+    config = function()
+      require("custom.configs.gen")
+    end
+  },
+
+  { "dj95/telescope-gen.nvim" },
+
 }
 
 return plugins

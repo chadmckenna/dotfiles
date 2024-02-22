@@ -11,11 +11,15 @@ M.general = {
         require("conform").format()
       end,
       "formatting",
-    }
+    },
+
+    ["<leader>gp"] = {"<Esc><cmd>lua require('telescope').extensions.gen.prompts({ mode = 'n'})<CR>"},
 
   },
   v = {
     [">"] = { ">gv", "indent"},
+
+    ["<leader>gp"] = {"<Esc><cmd>lua require('telescope').extensions.gen.prompts({ mode = 'v'})<CR>"},
   },
 }
 
