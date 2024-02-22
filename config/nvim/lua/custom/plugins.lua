@@ -71,9 +71,6 @@ local plugins = {
       require("custom.configs.gen")
     end
   },
-
-  { "dj95/telescope-gen.nvim" },
-
 }
 
 return plugins
