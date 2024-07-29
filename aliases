@@ -9,7 +9,7 @@ alias v="$VISUAL"
 alias b="bundle"
 
 # Rails
-alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
+alias migrate="rails db:migrate db:rollback && rake db:migrate db:test:prepare"
 alias s="rspec"
 
 # Pretty print the path
@@ -20,7 +20,6 @@ alias src='source ~/.zshrc'
 alias f='find . -iname'
 alias lines="git diff |egrep '^\+' |egrep -v '\+\+\+' |wc -l"
 alias blame='git blame'
-alias c='colordiff | less -R'
 alias ms='ls -lat /var/tmp/email_* |head'
 alias gagen='git add `gitgen`'
 alias rmgen='rm -f `gitgen`'

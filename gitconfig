@@ -13,6 +13,7 @@
   pf = push --force-with-lease
   st = status
   set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+  dft = difftool
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
@@ -34,3 +35,11 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[diff]
+  tool = difftastic
+[difftool]
+  prompt = false
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+  difftool = true

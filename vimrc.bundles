@@ -64,10 +64,6 @@ Plug 'ap/vim-css-color'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
-" C# Plugin
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'dense-analysis/ale'
-
 " Prettier Plugin
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
