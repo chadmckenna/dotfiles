@@ -11,7 +11,6 @@ return {
 	{'L3MON4D3/LuaSnip'},
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
-	{ "neovim/nvim-lspconfig" },
     { "nvim-tree/nvim-tree.lua" },
     "tpope/vim-fugitive",
 }
