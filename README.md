@@ -1,7 +1,5 @@
-thoughtbot dotfiles
-===================
-
-![prompt](http://images.thoughtbot.com/thoughtbot-dotfiles-prompt.png)
+Adapted from thoughtbot dotfiles
+================================
 
 Requirements
 ------------
@@ -49,6 +47,20 @@ You can safely run `rcup` multiple times to update:
 
 You should run `rcup` after pulling a new version of the repository to symlink
 any new files in the repository.
+
+
+Once everything is installed, install Tmux plugins from https://github.com/tmux-plugins/tpm.
+
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+Then source the tmux.conf
+
+    tmux source ~/.tmux.conf
+
+Followed by 
+    
+    <prefix> + I
+
 
 Make your own customizations
 ----------------------------
