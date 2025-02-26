@@ -13,4 +13,6 @@ return {
   { "williamboman/mason-lspconfig.nvim" },
   { "nvim-tree/nvim-tree.lua" },
   "tpope/vim-fugitive",
+  -- CoPilot w/ Tonic:
+  "github/copilot.vim"
 }

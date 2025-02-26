@@ -7,6 +7,8 @@ lsp_zero.on_attach(function(client, bufnr)
 
   local opts = {buffer = bufnr, remap = false}
 
+  -- [d and ]d jump between lsp diagnostic messages
+
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "gD", function()
     vim.api.nvim_cmd({cmd = 'vsplit'}, {})
