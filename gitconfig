@@ -1,9 +1,51 @@
-[init]
-  templatedir = ~/.git_template
-[push]
-  default = current
+[user]
+  name = Chad McKenna
+  email = chad.mckenna@hellotonic.com
+[credential]
+  helper = osxkeychain
 [color]
   ui = auto
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = input
+[init]
+  templatedir = ~/.git_template
+  defaultBranch = main
+[push]
+  default = simple
+  autoSetupRemote = true
+[branch]
+  sort = -commiterdate
+[commit]
+  template = ~/.gitmessage
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+[include]
+  path = ~/.gitconfig.local
+[pager]
+  difftool = true
+[rerere]
+  enabled = true
+  autoupdate = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[diff]
+  tool = difftastic
+  algorithm = histogram
+  colorMoved = plain
+[difftool]
+  prompt = false
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
 [alias]
   aa = add --all
   ap = add --patch
@@ -14,32 +56,3 @@
   st = status
   set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
   dft = difftool
-[core]
-  excludesfile = ~/.gitignore
-  autocrlf = input
-[commit]
-  template = ~/.gitmessage
-[fetch]
-  prune = true
-[rebase]
-  autosquash = true
-[include]
-  path = ~/.gitconfig.local
-[user]
-  name = Chad McKenna
-  email = chad.mckenna@hellotonic.com
-[credential]
-  helper = osxkeychain
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-[diff]
-  tool = difftastic
-[difftool]
-  prompt = false
-[difftool "difftastic"]
-  cmd = difft "$LOCAL" "$REMOTE"
-[pager]
-  difftool = true
