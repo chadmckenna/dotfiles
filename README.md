@@ -1,5 +1,5 @@
 Adapted from thoughtbot dotfiles
-================================
+===================
 
 Requirements
 ------------

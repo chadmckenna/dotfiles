@@ -8,7 +8,7 @@ tools:
     bash: false
 ---
 
-# Researcher Agent
+# Research Agent
 
 A specialized agent for conducting research and gathering information from external sources.
 
