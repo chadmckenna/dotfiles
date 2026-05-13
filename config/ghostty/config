@@ -1,0 +1,13 @@
+keybind = global:cmd+grave_accent=toggle_visibility
+theme = Catppuccin Mocha
+
+font-family="RobotoMono Nerd Font Mono"
+font-family-bold="RobotoMono Nerd Font Mono Bd"
+font-family-italic="RobotoMono Nerd Font Mono It"
+
+font-size=16
+
+gtk-titlebar=true
+
+macos-icon="holographic"
+copy-on-select=clipboard

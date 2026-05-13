@@ -1,0 +1,141 @@
+#!/bin/bash
+
+# Directory to store countdown info
+COUNTDOWN_DIR="${TMPDIR:-/tmp}/countdown_timers"
+mkdir -p "$COUNTDOWN_DIR"
+
+# Function to check running countdowns
+check_countdowns() {
+  local found=0
+
+  # Clean up stale files first
+  for info_file in "$COUNTDOWN_DIR"/*.info; do
+    [ -e "$info_file" ] || continue
+
+    local pid=$(basename "$info_file" .info)
+    if ! kill -0 "$pid" 2>/dev/null; then
+      rm -f "$info_file"
+    fi
+  done
+
+  # Check for running countdowns
+  for info_file in "$COUNTDOWN_DIR"/*.info; do
+    [ -e "$info_file" ] || continue
+
+    found=1
+    local pid=$(basename "$info_file" .info)
+
+    # Read the info file
+    local start_time=$(sed -n '1p' "$info_file")
+    local duration=$(sed -n '2p' "$info_file")
+    local minutes=$(sed -n '3p' "$info_file")
+    local name=$(sed -n '4p' "$info_file")
+
+    # Calculate elapsed and remaining time
+    local current_time=$(date +%s)
+    local elapsed=$((current_time - start_time))
+    local remaining=$((duration - elapsed))
+
+    # Build display string
+    local timer_desc
+    if [ -n "$name" ]; then
+      timer_desc="\"$name\" ($minutes min)"
+    else
+      timer_desc="$minutes minute(s)"
+    fi
+
+    if [ $remaining -le 0 ]; then
+      echo "PID $pid: $timer_desc - completing now"
+    else
+      local remaining_min=$((remaining / 60))
+      local remaining_sec=$((remaining % 60))
+      echo "PID $pid: $timer_desc - ${remaining_min}m ${remaining_sec}s remaining"
+    fi
+  done
+
+  if [ $found -eq 0 ]; then
+    echo "No countdown timers running"
+  fi
+}
+
+# Handle --any flag
+if [ "$1" = "--any" ]; then
+  check_countdowns
+  exit 0
+fi
+
+# If not already backgrounded, rerun in background
+if [ -z "$COUNTDOWN_BACKGROUNDED" ]; then
+  export COUNTDOWN_BACKGROUNDED=1
+  "$0" "$@" &
+  pid=$!
+  if [ -n "$2" ]; then
+    echo "Countdown timer \"$2\" started for $1 minute(s) (PID: $pid)"
+  else
+    echo "Countdown timer started for $1 minute(s) (PID: $pid)"
+  fi
+  exit 0
+fi
+
+# Check if parameter is provided
+if [ -z "$1" ]; then
+  echo "Usage: countdown <minutes> [name]"
+  echo "       countdown --any           (check running timers)"
+  exit 1
+fi
+
+minutes=$1
+name="$2"
+
+# Validate input is a number
+if ! [[ "$minutes" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+  echo "Error: Please provide a valid number of minutes"
+  exit 1
+fi
+
+# Convert to seconds and ensure decimal support
+if command -v bc &> /dev/null; then
+  seconds=$(echo "$minutes * 60" | bc)
+  duration=$(printf "%.0f" "$seconds")
+else
+  seconds=$(awk "BEGIN {printf \"%.2f\", $minutes * 60}")
+  duration=$(printf "%.0f" "$seconds")
+fi
+
+# Store countdown info
+info_file="$COUNTDOWN_DIR/$$.info"
+echo "$(date +%s)" > "$info_file"
+echo "$duration" >> "$info_file"
+echo "$minutes" >> "$info_file"
+echo "$name" >> "$info_file"
+
+# Sleep for the specified time
+sleep "$seconds"
+
+# Clean up info file
+rm -f "$info_file"
+
+# Play system sound three times (macOS)
+for i in 1 2 3; do
+  afplay /System/Library/Sounds/Glass.aiff 2>/dev/null
+done
+
+# Announce completion with text-to-speech
+if [ -n "$name" ]; then
+  say -v Samantha "$name has completed" 2>/dev/null
+else
+  say -v Samantha "Timer has completed" 2>/dev/null
+fi
+
+# Ring the terminal bell
+printf '\a'
+
+# Show notification (macOS) without sound since we're playing it above
+if [ -n "$name" ]; then
+  osascript -e "display notification \"Your $minutes minute timer '$name' has elapsed!\" with title \"Countdown Timer\"" 2>/dev/null
+else
+  osascript -e "display notification \"Your $minutes minute timer has elapsed!\" with title \"Countdown Timer\"" 2>/dev/null
+fi
+
+# Script automatically cleans itself up on exit
+exit 0

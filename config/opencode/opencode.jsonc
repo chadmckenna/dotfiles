@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  // Theme configuration
+  "model": "anthropic",
+  "autoupdate": true,
+  "lsp": {},
+  "tools": {
+    "lsp": true
+  }
+}
