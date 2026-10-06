@@ -18,3 +18,7 @@ vim.keymap.set('n', '<leader>gd', function()
   builtin.lsp_definitions({jump_type = "vsplit"})
 end)
 
+vim.keymap.set('n', '<leader>gs', function()
+  builtin.git_status({})
+end, { desc = "Git status (modified/new files)" })
+
