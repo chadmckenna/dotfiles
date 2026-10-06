@@ -58,4 +58,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 [ -f ~/.fzfrc ] && source ~/.fzfrc
 
 
-. "$HOME/.cargo/env"
+
+# opencode
+export PATH=/Users/chadmckenna/.opencode/bin:$PATH
